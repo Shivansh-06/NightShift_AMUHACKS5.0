@@ -20,7 +20,20 @@ with open(BASE_DIR / "data" / "careers.json", "r") as f:
 
 @app.get("/")
 def root():
-    return {"message": "SkillMap AI API is running"}
+    return {"message": "SkillMap API is running"}
+
+@app.get("/questions")
+def get_questions(career: str):
+    if career not in CAREERS:
+        raise HTTPException(status_code=400, detail="Invalid career selected")
+
+    # For MVP, return all questions
+    # Later: filter by career / difficulty
+    return {
+        "career": career,
+        "questions": QUESTIONS
+    }
+
 
 
 @app.post("/assess", response_model=AssessmentResponse)
