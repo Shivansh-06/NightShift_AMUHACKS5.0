@@ -1,0 +1,7 @@
+{
+  "Python": ["syntax", "pandas", "numpy"],
+  "Statistics": ["mean", "variance", "probability"],
+  "SQL": ["select", "joins", "group by"],
+  "Excel": ["pivot", "vlookup"],
+  "Visualization": ["charts", "dashboards"]
+}

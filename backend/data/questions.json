@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "skill": "Statistics",
+    "question": "What does standard deviation measure?",
+    "options": ["Mean", "Spread", "Median", "Mode"],
+    "answer": "Spread"
+  },
+  {
+    "id": 2,
+    "skill": "Python",
+    "question": "Which library is used for data manipulation?",
+    "options": ["NumPy", "Flask", "Django", "TensorFlow"],
+    "answer": "NumPy"
+  },
+  {
+    "id": 3,
+    "skill": "SQL",
+    "question": "Which SQL clause combines rows from tables?",
+    "options": ["WHERE", "JOIN", "ORDER BY", "LIMIT"],
+    "answer": "JOIN"
+  }
+]
