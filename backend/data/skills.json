@@ -1,7 +1,22 @@
 {
-  "Python": ["syntax", "pandas", "numpy"],
-  "Statistics": ["mean", "variance", "probability"],
-  "SQL": ["select", "joins", "group by"],
-  "Excel": ["pivot", "vlookup"],
-  "Visualization": ["charts", "dashboards"]
+  "Python": {
+    "description": "Used for data manipulation, analysis, and automation in analytics roles.",
+    "topics": ["syntax", "pandas", "numpy"]
+  },
+  "Statistics": {
+    "description": "Core foundation for interpreting data, measuring uncertainty, and making data-driven decisions.",
+    "topics": ["mean", "variance", "probability"]
+  },
+  "SQL": {
+    "description": "Essential for querying, joining, and aggregating data from relational databases.",
+    "topics": ["select", "joins", "group by"]
+  },
+  "Excel": {
+    "description": "Widely used for quick analysis, reporting, and business workflows.",
+    "topics": ["pivot tables", "vlookup"]
+  },
+  "Visualization": {
+    "description": "Used to communicate insights clearly using charts and dashboards.",
+    "topics": ["charts", "dashboards"]
+  }
 }
