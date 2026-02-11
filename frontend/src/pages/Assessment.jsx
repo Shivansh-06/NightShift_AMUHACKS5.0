@@ -55,7 +55,7 @@ export default function Assessment() {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/assess", {
+      const response = await fetch(`${BASE_URL}/assess`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "https://nightshift-amuhacks5-0.onrender.com";
 
 export async function fetchQuestions(career) {
   const response = await fetch(
