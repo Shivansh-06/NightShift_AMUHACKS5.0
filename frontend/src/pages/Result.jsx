@@ -62,41 +62,46 @@ export default function Result() {
 
 
 return (
-<div>
-    <h2>Skill DNA</h2>
+  <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center py-10 px-4">
 
-        <div style={{ maxWidth: "500px", marginBottom: "2rem" }}>
-        <Radar data={radarData} />
-        </div>
+    <h2 className="text-4xl font-bold mb-8">Skill DNA</h2>
 
+    <div className="w-full max-w-md bg-gray-800 rounded-xl p-6 shadow-lg">
+      <Radar data={radarData} options={radarOptions} />
+    </div>
 
-      <ul>
-        {Object.entries(state.skill_dna).map(([skill, level]) => (
-          <li key={skill}>
-            {skill}: {level}
-          </li>
-        ))}
-      </ul>
+    <div className="mt-8 w-full max-w-md space-y-6">
 
-      <h3>Career Alignment Score</h3>
-      <p>{state.career_alignment}%</p>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">Career Alignment Score</h3>
+        <p className="text-3xl font-bold text-blue-400">
+          {state.career_alignment}%
+        </p>
+      </div>
 
-      <h3>Recommended Learning Order</h3>
-      <ul>
-        {state.roadmap.map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
-      <h3>What NOT to Learn Right Now</h3>
-      <ul>
-        {state.avoid_for_now.map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">
+          Recommended Learning Order
+        </h3>
+        <ul className="list-disc list-inside space-y-1 text-gray-300">
+          {state.roadmap.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2 text-red-400">
+          What NOT to Learn Right Now
+        </h3>
+        <ul className="list-disc list-inside space-y-1 text-gray-400">
+          {state.avoid_for_now.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </div>
 
     </div>
-  );
+  </div>
+);
 }
-
-
-
