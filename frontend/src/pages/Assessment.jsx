@@ -34,6 +34,8 @@ export default function Assessment() {
       [questionId]: option,
     }));
   };
+  const allAnswered = questions.length === Object.keys(answers).length;
+
 
   const handleSubmit = async () => {
     const payload = {
@@ -62,31 +64,62 @@ export default function Assessment() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      <h2>{career} Assessment</h2>
+  <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center py-10 px-4">
+
+    <h2 className="text-3xl font-bold mb-8">
+      {career} Skill Assessment
+    </h2>
+
+    <div className="w-full max-w-2xl space-y-6">
 
       {questions.map((q) => (
-        <div key={q.id}>
-          <p><strong>{q.question}</strong></p>
+        <div
+          key={q.id}
+          className="bg-gray-800 p-6 rounded-xl shadow-md"
+        >
+          <p className="text-lg font-semibold mb-4">
+            {q.question}
+          </p>
 
-          {q.options.map((opt) => (
-            <label key={opt} style={{ display: "block" }}>
-              <input
-                type="radio"
-                name={`question-${q.id}`}
-                value={opt}
-                checked={answers[q.id] === opt}
-                onChange={() => handleSelect(q.id, opt)}
-              />
-              {opt}
-            </label>
-          ))}
+          <div className="space-y-3">
+            {q.options.map((opt) => (
+              <label
+                key={opt}
+                className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition ${
+                  answers[q.id] === opt
+                    ? "bg-blue-600"
+                    : "bg-gray-700 hover:bg-gray-600"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name={`question-${q.id}`}
+                  value={opt}
+                  checked={answers[q.id] === opt}
+                  onChange={() => handleSelect(q.id, opt)}
+                  className="hidden"
+                />
+                <span>{opt}</span>
+              </label>
+            ))}
+          </div>
         </div>
       ))}
 
-      <button onClick={handleSubmit}>
+      <button
+          onClick={handleSubmit}
+          disabled={!allAnswered}
+          className={`w-full py-3 rounded-xl font-semibold text-lg transition ${
+            allAnswered
+              ? "bg-blue-600 hover:bg-blue-700"
+              : "bg-gray-600 cursor-not-allowed"
+          }`}
+      >
         Submit Assessment
       </button>
+
+
     </div>
-  );
+  </div>
+);
 }
