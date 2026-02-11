@@ -7,15 +7,15 @@ Personalized Skill Gap Self-Diagnosis Tool
 
 Students often follow trending skills (AI, ML, Web3) without:
 
-Knowing their current competency
+-Knowing their current competency
 
-Understanding prerequisite gaps
+-Understanding prerequisite gaps
 
-Aligning learning with career goals
+-Aligning learning with career goals
 
-Most platforms recommend courses.
+-Most platforms recommend courses.
 
-Very few diagnose skill gaps before prescribing learning paths.
+-Very few diagnose skill gaps before prescribing learning paths.
 
 We wanted to solve the root problem:
 lack of structured self-diagnosis before skill acquisition.
@@ -24,34 +24,34 @@ lack of structured self-diagnosis before skill acquisition.
 
 Instead of building another recommender system, we built a:
 
-Career-specific diagnostic engine
+-Career-specific diagnostic engine
 
 SkillMap:
 
-Evaluates skill competency
+-Evaluates skill competency
 
-Identifies missing & weak foundations
+-Identifies missing & weak foundations
 
-Models prerequisite dependencies
+-Models prerequisite dependencies
 
-Generates structured learning order
+-Generates structured learning order
 
-Highlights high-impact bottlenecks
+-Highlights high-impact bottlenecks
 
-Provides domain-level coverage
+-Provides domain-level coverage
 
-We prioritized structure over volume of features.
+-We prioritized structure over volume of features.
 
 🏗 System Design Thinking
 1️⃣ Skills Modeled as a Directed Acyclic Graph (DAG)
 
 Each skill contains:
 
-Domain
+-Domain
 
-Prerequisites
+-Prerequisites
 
-Career relevance
+-Career relevance
 
 Example:
 
@@ -65,35 +65,35 @@ This allows learning order to be computed logically, not manually hardcoded.
 
 We implemented topological sorting (Kahn’s Algorithm) to:
 
-Respect prerequisite relationships
+-Respect prerequisite relationships
 
-Ensure foundational skills are prioritized
+-Ensure foundational skills are prioritized
 
-Avoid recommending advanced topics prematurely
+-Avoid recommending advanced topics prematurely
 
-This was chosen over manual ordering to make the system scalable.
+-This was chosen over manual ordering to make the system scalable.
 
 3️⃣ Strict Gap Filtering (Important Tradeoff)
 
 Early version issue:
 
-Even with full score, roadmap recommended Python & Probability.
+-Even with full score, roadmap recommended Python & Probability.
 
-Root cause:
-Topological resolver returned full dependency chain without checking mastery.
+-Root cause:
+  Topological resolver returned full dependency chain without checking mastery.
 
-Fix:
-We strictly filtered roadmap to include only:
+-Fix:
+  We strictly filtered roadmap to include only:
 
-Missing skills
+  -Missing skills
 
-Weak skills
+  -Weak skills
 
-Tradeoff:
-We sacrificed “aggressive upskilling suggestions”
-in favor of diagnostic credibility.
+-Tradeoff:
+  We sacrificed “aggressive upskilling suggestions”
+  in favor of diagnostic credibility.
 
-We chose correctness over feature density.
+-We chose correctness over feature density.
 
 4️⃣ Career-Specific Evaluation
 
@@ -113,15 +113,15 @@ Each career now evaluates relevant competencies only.
 
 Instead of only showing flat skill scores, we grouped skills into domains:
 
-Mathematics
+-Mathematics
 
-Programming
+-Programming
 
-Data Handling
+-Data Handling
 
-Machine Learning
+-Machine Learning
 
-Systems
+-Systems
 
 This helps users understand structural weaknesses, not just isolated gaps.
 
@@ -157,19 +157,19 @@ Scoped dependency impact calculation to career-specific required skills.
 
 🔄 Final User Flow
 
-Select Career Track
+-Select Career Track
 
-Complete Wizard-Based Assessment
+-Complete Wizard-Based Assessment
 
-System Builds Skill DNA
+-System Builds Skill DNA
 
-Career Alignment Score Calculated
+-Career Alignment Score Calculated
 
-Domain Coverage Analyzed
+-Domain Coverage Analyzed
 
-Dependency-Ordered Roadmap Generated
+-Dependency-Ordered Roadmap Generated
 
-Focus-Later Skills Identified
+-Focus-Later Skills Identified
 
 ⚖ Key Tradeoffs We Made
 Decision	Tradeoff
@@ -180,29 +180,29 @@ Strict filtering	Diagnostic clarity vs broader suggestions
 
 We prioritized:
 
-Structural correctness
+-Structural correctness
 
-Clear reasoning
+-Clear reasoning
 
-Scalability
+-Scalability
 
-Demonstrable logic
+-Demonstrable logic
 
-Over adding complexity.
+-Over adding complexity.
 
 📈 Future Scope
 
-Adaptive question difficulty
+-Adaptive question difficulty
 
-ML-based recommendation weighting
+-ML-based recommendation weighting
 
-GitHub skill inference
+-GitHub skill inference
 
-LinkedIn integration
+-LinkedIn integration
 
-Industry-calibrated evaluation
+-Industry-calibrated evaluation
 
-Progress tracking over time
+-Progress tracking over time
 
 🎯 What Makes SkillMap Different
 
@@ -210,27 +210,27 @@ SkillMap does not just recommend skills.
 
 It:
 
-Models learning as a structured graph
+-Models learning as a structured graph
 
-Diagnoses competency gaps
+-Diagnoses competency gaps
 
-Computes learning order logically
+-Computes learning order logically
 
-Respects career-specific requirements
+-Respects career-specific requirements
 
 It demonstrates:
 
-System-level thinking > surface-level features.
+-System-level thinking > surface-level features.
 
 🏆 Built During Hackathon
 
 SkillMap evolved from:
 
-Flat skill scoring →
-Career-aware evaluation →
-Dependency-aware roadmap →
-Strict diagnostic filtering →
-Structured domain abstraction.
+-Flat skill scoring →
+-Career-aware evaluation →
+-Dependency-aware roadmap →
+-Strict diagnostic filtering →
+-Structured domain abstraction.
 
 Each iteration improved structural integrity.
 
