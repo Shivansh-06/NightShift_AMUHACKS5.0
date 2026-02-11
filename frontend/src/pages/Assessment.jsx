@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchQuestions } from "../api/backend";
 import StepProgress from "../components/StepProgress";
+import { submitAssessment } from "../api";
 
 
 export default function Assessment() {
@@ -46,35 +47,26 @@ export default function Assessment() {
   const handleSubmit = async () => {
   setSubmitting(true);
 
-    const payload = {
-      career,
-      answers: Object.entries(answers).map(([qid, selected]) => ({
-        question_id: Number(qid),
-        selected,
-      })),
-    };
-
-    try {
-      const response = await fetch(`${BASE_URL}/assess`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      // Small delay for smoother UX
-      setTimeout(() => {
-        navigate("/result", { state: result });
-      }, 600);
-
-    } catch (error) {
-      console.error(error);
-      setSubmitting(false);
-    }
+  const payload = {
+    career,
+    answers: Object.entries(answers).map(([qid, selected]) => ({
+      question_id: Number(qid),
+      selected,
+    })),
   };
+
+  try {
+    const result = await submitAssessment(payload);
+
+    setTimeout(() => {
+      navigate("/result", { state: result });
+    }, 600);
+
+  } catch (error) {
+    console.error(error);
+    setSubmitting(false);
+  }
+};
 
 
  // Guard states

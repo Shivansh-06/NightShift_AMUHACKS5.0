@@ -11,3 +11,19 @@ export async function fetchQuestions(career) {
 
   return response.json();
 }
+
+export async function submitAssessment(data) {
+  const response = await fetch(`${BASE_URL}/assess`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to submit assessment");
+  }
+
+  return response.json();
+}
